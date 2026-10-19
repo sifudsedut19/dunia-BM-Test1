@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunia Bahasa Melayu</title>
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eff8f2;
+    color: #183d35;
+  }
+
+  header {
+    background: #155e4b;
+    color: white;
+    padding: 24px 16px;
+    text-align: center;
+    border-radius: 0 0 24px 24px;
+  }
+
+  main {
+    max-width: 700px;
+    margin: auto;
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .panel {
+    background: white;
+    border-radius: 20px;
+    padding: 24px 16px;
+    margin: 16px 0;
+    box-shadow: 0 4px 14px #00000012;
+  }
+
+  button {
+    border: 0;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin: 6px;
+    background: #f5c451;
+    color: #183d35;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #f0b82e;
+  }
+
+  .secondary {
+    background: #dcefe5;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  h1 { margin-bottom: 8px; }
+  p { line-height: 1.6; }
+
+  footer {
+    padding: 20px;
+    text-align: center;
+    color: #527067;
+    font-size: 13px;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 Dunia Bahasa Melayu</h1>
+  <p>Belajar • Bermain • Teroka</p>
+</header>
+
+<main>
+
+  <!-- HOMEPAGE -->
+  <section id="home" class="page active">
+    <div class="panel">
+      <h2>Hai, murid hebat! 👋</h2>
+      <p>
+        Selamat datang ke dunia pembelajaran
+        Bahasa Melayu yang menyeronokkan.
+      </p>
+      <button onclick="showPage('nota')">
+        🚀 Mula Pembelajaran
+      </button>
+    </div>
+
+    <div class="panel">
+      <h3>Pilih aktiviti anda</h3>
+      <button onclick="showPage('nota')">
+        📖 Nota
+      </button>
+      <button onclick="showPage('kuiz')">
+        🎮 Kuiz
+      </button>
+    </div>
+  </section>
+
+  <!-- HALAMAN NOTA -->
+  <section id="nota" class="page">
+    <div class="panel">
+      <h2>📖 Nota Bahasa Melayu</h2>
+      <p>
+        Kata nama ialah perkataan yang merujuk
+        manusia, haiwan, tempat dan benda.
+      </p>
+      <p>Contoh: guru, kucing, sekolah dan buku.</p>
+      <button onclick="showPage('kuiz')">
+        Seterusnya: Kuiz ➜
+      </button>
+      <button class="secondary" onclick="showPage('home')">
+        ⌂ Kembali ke Home
+      </button>
+    </div>
+  </section>
+
+  <!-- HALAMAN KUIZ -->
+  <section id="kuiz" class="page">
+    <div class="panel">
+      <h2>🎮 Kuiz Bahasa Melayu</h2>
+      <p>Yang manakah kata nama?</p>
+
+      <button onclick="checkAnswer(false)">
+        Berlari
+      </button>
+
+      <button onclick="checkAnswer(true)">
+        Sekolah
+      </button>
+
+      <button onclick="checkAnswer(false)">
+        Cantik
+      </button>
+
+      <p id="result" aria-live="polite"></p>
+
+      <button class="secondary"
+        onclick="showPage('home')">
+        ⌂ Kembali ke Home
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Laman Pembelajaran Bahasa Melayu
+</footer>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page')
+      .forEach(function(page) {
+        page.classList.remove('active');
+      });
+
+    document.getElementById(pageId)
+      .classList.add('active');
+
+    window.scrollTo(0, 0);
+  }
+
+  function checkAnswer(correct) {
+    document.getElementById('result').textContent =
+      correct
+        ? 'Betul! Sekolah ialah kata nama. 🎉'
+        : 'Belum tepat. Cuba lagi! 💪';
+  }
+</script>
+
+</body>
+</html>
